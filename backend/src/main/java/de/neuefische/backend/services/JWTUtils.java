@@ -16,12 +16,12 @@ public class JWTUtils {
     //todo change secret
     static final String secret = "derSecretWirdSpaeterInDieHerokuConfigVariableGeschrieben";
 
-    public String createToken(Map<String, Object> claims, String subject) {
+    public String createToken(Map<String, Object> claims, String subject, int timeout) {
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(Date.from(Instant.now()))
-                .setExpiration(Date.from(Instant.now().plus(Duration.ofHours(12))))
+                .setExpiration(Date.from(Instant.now().plus(Duration.ofMinutes(timeout))))
                 .signWith(SignatureAlgorithm.HS256, secret)
                 .compact();
     }

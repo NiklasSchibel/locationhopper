@@ -1,4 +1,4 @@
-import {Button, IconButton, TextField} from "@mui/material";
+import {Button, IconButton, TextField, Typography} from "@mui/material";
 import React, {
     ChangeEvent,
     ChangeEventHandler,
@@ -13,6 +13,7 @@ import {loginRequest} from "../services/RequestService";
 import {useNavigate} from "react-router-dom";
 import {AuthContext} from "../context/AuthProvider";
 import NavBar from "../components/NavBar";
+import Slider from '@mui/material/Slider';
 
 
 interface State {
@@ -33,7 +34,7 @@ export default function LoginPage() {
         showPassword: false,
     });
     const [usernameValue, setUsernameValue] = useState<String>("");
-
+    const [timevalue, setTimevalue] = useState<number>(15);
     const navigate = useNavigate()
 
     const {setJwt} = useContext(AuthContext)
@@ -61,15 +62,15 @@ export default function LoginPage() {
     };
 
     const onSubmitButton: () => void = () => {
-        console.log("This is the Username: " + usernameValue + ", for the LoginRequest")
         const login: LoginData = {
             name: usernameValue,
             password: values.password,
+            timeout: timevalue,
         };
         loginRequest(login)
             .then((data)=>{
                 setJwt(data)
-                navigate('/main')
+                navigate('/TestPage')
             })
     }
 
@@ -79,6 +80,11 @@ export default function LoginPage() {
             onSubmitButton();
         }
     };
+
+    const handleSliderChange = (event: Event, newValue: number | number[]) => {
+        setTimevalue(newValue as number);
+    };
+
 
     return (
         <div className="LoginPage">
@@ -94,7 +100,6 @@ export default function LoginPage() {
                 <TextField
                     id="outlined-password-input"
                     label="Password"
-                    // type="password"
                     autoComplete="current-password"
                     type={values.showPassword ? 'text' : 'password'}
                     value={values.password}
@@ -111,6 +116,14 @@ export default function LoginPage() {
                     {values.showPassword ? <VisibilityOff/> : <Visibility/>}
                 </IconButton>
             </div>
+            <Typography gutterBottom>Zeitlimit in Minuten</Typography>
+            <Slider aria-label="Time"
+                    value={timevalue}
+                    onChange={handleSliderChange}
+                    valueLabelDisplay="auto"
+                    min={3}
+                    max={40}
+            />
             <Button className="button-submit"
                     variant="contained"
                     onClick={onSubmitButton}>

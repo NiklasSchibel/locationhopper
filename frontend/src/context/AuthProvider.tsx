@@ -3,7 +3,7 @@ import jwt_decode from 'jwt-decode'
 
 export interface AuthContextType {
     token?: string,
-    jwtDecoded?: { sub?: string }
+    jwtDecoded?: { sub?: string, exp?: number }
     setJwt: (jwt: string) => void
 }
 

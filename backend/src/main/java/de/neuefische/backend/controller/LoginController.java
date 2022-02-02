@@ -37,7 +37,7 @@ public class LoginController {
                     new UsernamePasswordAuthenticationToken(data.getName(), data.getPassword())
             );
             LOG.info("User: " + data.getName().toUpperCase() + " ist eingeloggt");
-            return jwtService.createToken(new HashMap<>(), data.getName());
+            return jwtService.createToken(new HashMap<>(), data.getName(), data.getTimeout());
         } catch (AuthenticationException e) {
             LOG.warn("Benutzername oder Password von User: " + data.getName().toUpperCase() + " nicht richtig");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid_credentials");
