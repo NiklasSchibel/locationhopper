@@ -5,7 +5,19 @@ import {LoginData} from "../models/LoginData";
 export const loginRequest = (login: LoginData) =>
     axios.post(`/auth/login`, login)
         .then(response => response.data)
-        .catch(console.error)
+        .catch(function (error) {
+                if (error.response.status === 400) {
+                    alert("Bitte überprüfe dein Benutzername und dein Passwort")
+                    console.log(error);
+                } else if (error.request) {
+                    alert("Server ist down, bitte später erneut probieren.")
+                    console.log(error.request);
+                } else {
+                    alert("Ein unerwarteter Fehler ist aufgetreten, bitte später erneut probieren.")
+                    console.log('Error', error.message);
+                }
+            }
+        )
 
 
 
