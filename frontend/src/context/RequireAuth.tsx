@@ -8,6 +8,9 @@ export default function RequireAuth({children}: { children: ReactElement<any, an
 
     function isExpirationValid(): boolean {
         const Now = new Date();
+
+        //todo: get jwtDecoded?.exp tested before using
+
         //@ts-ignore
         const ExpirationTimeToken = new Date(jwtDecoded?.exp * 1000);
         const TimeLeftToPlay: number = ExpirationTimeToken.getTime() - Now.getTime()
