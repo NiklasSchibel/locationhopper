@@ -1,7 +1,6 @@
 import Card from "./Card";
 import "./Gallery.scss"
 import {useEffect, useState} from "react";
-
 import {fetch1Characters} from "../services/RequestService";
 
 export default function Gallery(){
