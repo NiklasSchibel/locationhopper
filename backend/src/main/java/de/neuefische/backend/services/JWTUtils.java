@@ -14,6 +14,9 @@ import java.util.Map;
 public class JWTUtils {
 
     //todo change secret
+    //@Value(value="${SECRET_KEY}")
+    //set SECRET KEY into environment variable to run configuration/modify
+    // rename to private String secret;
     static final String secret = "derSecretWirdSpaeterInDieHerokuConfigVariableGeschrieben";
 
     public String createToken(Map<String, Object> claims, String subject, int timeout) {
