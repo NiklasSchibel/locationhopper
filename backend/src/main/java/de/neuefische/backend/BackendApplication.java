@@ -1,18 +1,7 @@
 package de.neuefische.backend;
 
-import de.neuefische.backend.models.UserMongo;
-import de.neuefische.backend.repositories.MongoUserRepository;
-import de.neuefische.backend.services.MongoUserDetailsService;
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.List;
 
 @SpringBootApplication
 public class BackendApplication {

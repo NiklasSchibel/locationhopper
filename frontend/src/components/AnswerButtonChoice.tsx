@@ -1,8 +1,11 @@
+
+import "./AnswerButtonChoice.scss"
 import {Button} from "@mui/material";
 import React, {useEffect, useState} from "react";
 
+
 interface AnswerButtonChoiceProps {
-    animal_type: string
+    animal_name: string
     firstLetterOfAnimalName: string
 
 }
@@ -69,11 +72,11 @@ export default function AnswerButtonChoice(props: AnswerButtonChoiceProps) {
 
 
     /**
-     * this function checks if clicked Button is the correct answer and setAnswer true, if it is the case
-     * @param string
+     * this function checks if clicked Button is the correct answer and setAnswer true, if that is the case
+     * @param letter
      */
-    const onClickHandleButton = (string: string) => {
-        if (string === props.firstLetterOfAnimalName) {
+    const onClickHandleButton = (letter: string) => {
+        if (letter === props.firstLetterOfAnimalName) {
             setAnswer(true)
         }
     }
@@ -82,14 +85,13 @@ export default function AnswerButtonChoice(props: AnswerButtonChoiceProps) {
      * this function returns a smile when
      * @param givenAnswer is true
      */
-    const AnswerTrueComponent = (givenAnswer: boolean) => {
-        if (givenAnswer) {
+    const AnswerTrueComponent = () => {
             return (
                 <div>
                     "happy":)
                 </div>)
         }
-    }
+
 
 
     return (
@@ -100,7 +102,7 @@ export default function AnswerButtonChoice(props: AnswerButtonChoiceProps) {
                     className="ButtonText" variant="outlined" color="success">{choicesShuffled[1]}</Button>
             <Button onClick={() => onClickHandleButton(choicesShuffled[2])}
                     className="ButtonText" variant="outlined" color="success">{choicesShuffled[2]}</Button>
-            {AnswerTrueComponent(answer)}
+            {answer && <AnswerTrueComponent/>}
         </div>
     )
 }

@@ -1,27 +1,18 @@
 import "./Card.scss"
-import React, {useState} from "react";
-import {Button} from "@mui/material";
-
-
-import React, {useState} from "react";
+import {useState} from "react";
 import AnswerButtonChoice from "./AnswerButtonChoice";
-
 
 interface cardProps {
     key: string
-    name: string
+    animalName: string
     id: string
-    animal_type: string
-    image_link: string
-    latin_name: string
+    imageLink: string
 }
 
-export default function Card(props: cardProps) {
-    const {animal_type, image_link} = props
-
+export default function Card({animalName, imageLink}: cardProps) {
     const LANGUAGE: string = "de-de";
     const STANDARDTEXTVOICE: string = " ";
-    const firstLetterOfAnimalName = getFirstLetter(animal_type);
+    const firstLetterOfAnimalName = getFirstLetter(animalName);
     const [text, setText] = useState<string>('');
 
 
@@ -29,7 +20,8 @@ export default function Card(props: cardProps) {
     const key: string = "a7aae25de0b446c7adc2571316a7ddfc&";
     const srcString: string = "https://api.voicerss.org/?key="
         + key + "hl=" + LANGUAGE + "&src="
-        + STANDARDTEXTVOICE + getFirstWord(animal_type);
+        + STANDARDTEXTVOICE + getFirstWord(animalName);
+
 
 
     /**
@@ -43,7 +35,6 @@ export default function Card(props: cardProps) {
             return sentence;
         }
     }
-
 
     /**
      * returns the first letter of the word provided
@@ -70,14 +61,11 @@ export default function Card(props: cardProps) {
 
     return (
         <div onClick={onClickHandleCard} className="card">
-
-            <img className="image" src={image_link} alt="Ein Bild"/>
-            <React.Fragment>
-                <h4>{getFirstWord(animal_type)}</h4>
-                <audio autoPlay src={text} controls/>
-            </React.Fragment>
+            <img className="image" loading="lazy" src={imageLink} alt="Ein Bild"/>
+            <h4>{getFirstWord(animalName)}</h4>
+            <audio autoPlay src={text} controls/>
             <AnswerButtonChoice
-                animal_type={animal_type}
+                animal_name={animalName}
                 firstLetterOfAnimalName={firstLetterOfAnimalName}
             />
 

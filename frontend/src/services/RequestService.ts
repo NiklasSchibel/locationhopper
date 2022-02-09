@@ -19,12 +19,14 @@ export const loginRequest = (login: LoginData) =>
             }
         )
 
-export const fetch10Characters = () =>
-    axios.get("https://zoo-animal-api.herokuapp.com/animals/rand/10")
-        .then(res => res.data)
 
-
-export const fetch1Characters = () =>
-    axios.get("https://zoo-animal-api.herokuapp.com/animals/rand/")
-        .then(res => res.data)
+export const fetchRandomAnimal = (token?: string) =>
+    axios.get('/api/animals/rand', token ? {
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    } : {}).then(response => response.data)
+        .catch((error) => {
+            console.log(error);
+        })
 

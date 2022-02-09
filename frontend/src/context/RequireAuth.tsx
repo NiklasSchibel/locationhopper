@@ -7,17 +7,17 @@ export default function RequireAuth({children}: { children: ReactElement<any, an
     const {jwtDecoded} = useContext(AuthContext)
 
     function isExpirationValid(): boolean {
+      
+        if (!jwtDecoded?.exp) return false
+
         const Now = new Date();
-
-        //todo: get jwtDecoded?.exp tested before using
-
-        //@ts-ignore
         const ExpirationTimeToken = new Date(jwtDecoded?.exp * 1000);
         const TimeLeftToPlay: number = ExpirationTimeToken.getTime() - Now.getTime()
         return (TimeLeftToPlay > 0)
     }
 
-    if (jwtDecoded?.exp && isExpirationValid()) {
+    if (isExpirationValid()) {
+
         return children;
     } else {
         return <LoginPage/>
