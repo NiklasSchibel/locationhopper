@@ -37,11 +37,13 @@ public class UserMongo implements UserDetails {
     @Id
     String username;
     String password;
+    String level;
     private List<String> rights;
     boolean enabled;
     boolean accountNonExpired;
     boolean accountNonLocked;
     boolean credentialsNonExpired;
+
 
 
     @Override

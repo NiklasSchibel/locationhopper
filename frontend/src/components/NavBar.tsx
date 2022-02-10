@@ -1,4 +1,4 @@
-import './NavBar.scss';
+import './stylingComponents/NavBar.scss';
 import { Link } from "react-router-dom";
 
 export default function NavBar(){
@@ -6,7 +6,7 @@ export default function NavBar(){
         <div className="navbar">
             <Link className={"nav-item"} to="/TestPage">TestPage</Link>
             <Link className={"nav-item"} to="/Login">Login</Link>
-            <Link className={"nav-item"} to="/MainPage">MainPage</Link>
+            <Link className={"nav-item"} to="/AgameBC">AgameBC</Link>
         </div>
     )
 }

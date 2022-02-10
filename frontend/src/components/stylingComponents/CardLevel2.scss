@@ -1,0 +1,26 @@
+.card {
+  text-align: center;
+  min-width: 20rem;
+  background-color: white;
+  margin: 1rem;
+  border-radius: 7px;
+  padding-bottom: 5px;
+  border: solid 1px black;
+  box-shadow: 5px 5px 2px grey;
+}
+
+
+.image{
+  height: 20rem;
+  width: 20rem;
+}
+
+.ButtonsSelection{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.ButtonText{
+  display: flex;
+}

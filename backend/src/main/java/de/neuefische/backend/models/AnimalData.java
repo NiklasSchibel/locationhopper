@@ -1,9 +1,6 @@
 package de.neuefische.backend.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,7 +11,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Animals")
 public class AnimalData {
 
+    @NonNull
+    @Id
     String id;
+
     String deName;
     String imageLink;
     String startingLetter;

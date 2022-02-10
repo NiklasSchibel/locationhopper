@@ -1,13 +1,12 @@
 import {ReactElement, useContext} from "react";
 import {AuthContext} from "./AuthProvider";
-import LoginPage from "../pages/LoginPage";
+import Login from "../pages/Login";
 
 export default function RequireAuth({children}: { children: ReactElement<any, any> }) {
 
     const {jwtDecoded} = useContext(AuthContext)
 
     function isExpirationValid(): boolean {
-      
         if (!jwtDecoded?.exp) return false
 
         const Now = new Date();
@@ -17,10 +16,9 @@ export default function RequireAuth({children}: { children: ReactElement<any, an
     }
 
     if (isExpirationValid()) {
-
         return children;
     } else {
-        return <LoginPage/>
+        return <Login/>
     }
 }
 
