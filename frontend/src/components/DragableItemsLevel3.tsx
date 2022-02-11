@@ -89,9 +89,9 @@ export default function DragableItemsLevel3({animalName}: DragableItemsProps) {
     return (
         <div>
             <h2>{animalName}</h2>
-            <Reorder.Group axis="y" values={choicesShuffled} onReorder={setChoicesShuffled}>
+            <Reorder.Group axis="y" as="ol" values={choicesShuffled} onReorder={setChoicesShuffled}>
                 {choicesShuffled.map((item, key) => (
-                    <Reorder.Item key={item} value={item}>
+                    <Reorder.Item className="ItemReorder" key={item} value={item}>
                         {item}
                     </Reorder.Item>
                 ))}
@@ -100,3 +100,4 @@ export default function DragableItemsLevel3({animalName}: DragableItemsProps) {
         </div>
     )
 }
+
