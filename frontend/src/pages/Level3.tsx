@@ -2,9 +2,9 @@ import "./stylingPages/Level3.scss"
 import React, {useEffect, useState} from 'react';
 import DragableItemsLevel3 from "../components/DragableItemsLevel3";
 import {fetchRandomAnimal} from "../services/RequestService";
-import NavBar from "../components/NavBar";
 import {AnimalData} from "../models/AnimalData";
 import {useNavigate} from "react-router-dom";
+import TimeLeftToPlayAndLevel from "../components/TimeLeftToPlayAndLevel";
 
 
 export default function Level3() {
@@ -54,16 +54,16 @@ export default function Level3() {
 
 
     if (!animal) {
-        return <div>
+        return <div className={"level3Page"}>
             <h1>loading...</h1>
         </div>
     }
 
     return (
         <div>
-            <NavBar></NavBar>
+            <TimeLeftToPlayAndLevel/>
+            <div className={"level3Page"}>
 
-            <div className={"Level3Page"}>
                 <audio autoPlay src={srcString} controls/>
                 <DragableItemsLevel3
                     id={animal.id}

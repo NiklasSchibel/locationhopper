@@ -12,7 +12,6 @@ import {LoginData} from "../models/LoginData";
 import {loginRequest} from "../services/RequestService";
 import {useNavigate} from "react-router-dom";
 import {AuthContext} from "../context/AuthProvider";
-import NavBar from "../components/NavBar";
 import Slider from '@mui/material/Slider';
 
 
@@ -26,7 +25,6 @@ interface State {
 
 
 export default function Login() {
-    const now = new Date();
     const [values, setValues] = useState<State>({
         amount: '',
         password: '',
@@ -35,7 +33,7 @@ export default function Login() {
         showPassword: false,
     });
     const [usernameValue, setUsernameValue] = useState<String>("");
-    const [timevalue, setTimevalue] = useState<number>(15);
+    const [timevalue, setTimevalue] = useState<number>(5);
     const navigate = useNavigate()
 
     const {setJwt} = useContext(AuthContext)
@@ -63,9 +61,6 @@ export default function Login() {
     };
 
     const onSubmitButton: () => void = () => {
-        console.log("This is the Username: " + usernameValue + ", for the LoginRequest")
-        console.log("Timelimit for Login: " + timevalue)
-        console.log("jetzt hat es so viele Minuten:" , now.getMinutes())
         const login: LoginData = {
             name: usernameValue,
             password: values.password,
@@ -74,7 +69,7 @@ export default function Login() {
         loginRequest(login)
             .then((data)=>{
                 setJwt(data)
-                navigate('/AgameBC')
+                navigate('/Level1')
             })
     }
 
@@ -92,7 +87,6 @@ export default function Login() {
 
     return (
         <div className="LoginPage">
-            <NavBar/>
             <h1>Login:</h1>
             <div className="InputData">
                 <TextField

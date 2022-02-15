@@ -2,13 +2,12 @@ import "./stylingPages/Level2.scss"
 import {useEffect, useState} from "react";
 import {fetchRandomAnimal} from "../services/RequestService";
 import CardLevel2 from "../components/CardLevel2";
-import NavBar from "../components/NavBar";
 import {AnimalData} from "../models/AnimalData";
+import TimeLeftToPlayAndLevel from "../components/TimeLeftToPlayAndLevel";
 
 export default function Level2() {
 
     const [animal, setAnimal] = useState<AnimalData>();
-    // const {levelOfPlayer} = useContext(LevelContext)
 
 
     useEffect(() => {
@@ -16,14 +15,14 @@ export default function Level2() {
     }, [])
 
     if (!animal) {
-        return <div>
+        return <div className="Level2Page">
             <h1>loading...</h1>
         </div>
     }
 
     return (
         <div>
-            <NavBar/>
+            <TimeLeftToPlayAndLevel/>
             <div className="Level2Page">
                 {animal ? <CardLevel2
                     id={animal.id}

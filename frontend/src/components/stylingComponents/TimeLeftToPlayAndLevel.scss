@@ -1,0 +1,22 @@
+.timeLeftToPlayAndLevel{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffaa00;
+  padding: 0.8rem
+}
+
+
+.timeLeft{
+  display: flex;
+  flex-direction: row;
+  //font-weight: 500;
+}
+
+.levelOfPlayer{
+  display: flex;
+  flex-direction: row;
+  font-weight: 500;
+  //border-bottom: double 3px #000000;
+}

@@ -4,12 +4,13 @@ import {TextField} from "@mui/material";
 import smile from "../images/iconSmile.png";
 import {LevelContext} from "../context/LevelProvider";
 import {useNavigate} from "react-router-dom";
+import TimeLeftToPlayAndLevel from "../components/TimeLeftToPlayAndLevel";
 
 
 export default function Level1() {
-    const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    const LANGUAGE: string = "de-de"
-    const STANDARDTEXTVOICE: string = "das ist der Buchstabe "
+    const ALPHABET = `ABCDEFGHIJKLMNOPQRSTUVWXYZ`
+    const LANGUAGE: string = `de-de`
+    const STANDARDTEXTVOICE: string = `das ist der Buchstabe `
     const navigate = useNavigate()
     const {levelUp} = useContext(LevelContext)
     const [randomLetter, setRandomLetter] = useState<string>(" ")
@@ -18,22 +19,24 @@ export default function Level1() {
     const [answer, setAnswer] = useState<boolean>(false)
     const [text, setText] = useState<string>('');
 
-
-
     const [inputText] = useState<string>("")
 
 
     useEffect(() => {
         setRandomLetter(ALPHABET[Math.floor(Math.random() * ALPHABET.length)])
+// eslint-disable-next-line
     }, [])
 
 
     //todo: set key later in environment
-    const key: string = "a7aae25de0b446c7adc2571316a7ddfc&";
+    const key: string = `a7aae25de0b446c7adc2571316a7ddfc&`;
     const srcString: string = "https://api.voicerss.org/?key="
         + key + "hl=" + LANGUAGE + "&src="
         + STANDARDTEXTVOICE + randomLetter + ".schreibe ihn in dem Feld unten selbst";
 
+    //todo: set to new format
+    // eslint-disable-next-line
+    const srcString2 = `https://api.voicerss.org/?key=: ${key} ${LANGUAGE} ${STANDARDTEXTVOICE}... this format approximately`;
 
     const handleChange: ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>
         = (event) => {
@@ -70,8 +73,7 @@ export default function Level1() {
 
     return (
         <div>
-            {/*<NavBar></NavBar>*/}
-            <div>levelpoints and time Left to play Feature</div>
+            <TimeLeftToPlayAndLevel/>
             <div onClick={onClickHandleCard} className="Level1Page">
                 <h1>{requiredLetter}</h1>
                 <audio autoPlay src={text} controls/>

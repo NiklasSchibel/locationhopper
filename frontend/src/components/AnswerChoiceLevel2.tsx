@@ -23,10 +23,6 @@ export default function AnswerChoiceLevel2({animal_name,firstLetterOfAnimalName}
     useEffect(() => {
         setFirstRandomLetter(generateNewRandomLetter(ALPHABET,
             firstLetterOfAnimalName));
-        setSecondRandomLetter(generateNewRandomLetter(ALPHABET,
-            firstLetterOfAnimalName,
-            firstRandomLetter));
-        setChoicesShuffled(shuffleArray(choices));
         // eslint-disable-next-line
     }, [])
 

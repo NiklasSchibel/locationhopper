@@ -4,7 +4,6 @@ import AuthProvider from "./context/AuthProvider";
 import Login from "./pages/Login";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import RequireAuth from "./context/RequireAuth";
-import TestPageAfterLogin from "./pages/TestPageAfterLogin";
 import AgameBC from "./pages/AgameBC";
 import LevelProvider from "./context/LevelProvider";
 import Level1 from "./pages/Level1";
@@ -35,10 +34,6 @@ export default function App() {
                         <Route path="/Level3" element={
                             <RequireAuth>
                                 <Level3/>
-                            </RequireAuth>}/>
-                        <Route path="/TestPage" element={
-                            <RequireAuth>
-                                <TestPageAfterLogin/>
                             </RequireAuth>}/>
 
                     </Routes>

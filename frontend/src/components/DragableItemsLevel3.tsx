@@ -3,6 +3,7 @@ import React, {useContext, useEffect, useState} from "react";
 import {LevelContext} from "../context/LevelProvider";
 import smile from "../images/iconSmile.png";
 import {useNavigate} from "react-router-dom";
+import "./stylingComponents/DragableItemsLevel3.scss"
 
 interface DragableItemsProps {
     key: string
@@ -14,10 +15,8 @@ interface DragableItemsProps {
 export default function DragableItemsLevel3({animalName}: DragableItemsProps) {
     const [answer, setAnswer] = useState<boolean>(false);
     const navigate = useNavigate();
-    // const letterString: String = new String(props.animalName); // the constructor leads to a warning but no work around found yet
-    const letterstring: string = getStringOfAnimalName(animalName); // does not work because of "can not read properties of undefined"
-    const letterArray = letterstring.split(''); //this is an string[]
-    // const [letters, setLetters] = useState(letterArray)
+    const letterString: string = getStringOfAnimalName(animalName);
+    const letterArray = letterString.split('');
     const [choicesShuffled, setChoicesShuffled] = useState<Array<string>>([]);
     const {levelUp} = useContext(LevelContext)
 
@@ -88,10 +87,9 @@ export default function DragableItemsLevel3({animalName}: DragableItemsProps) {
 
     return (
         <div>
-            <h2>{animalName}</h2>
             <Reorder.Group axis="y" as="ol" values={choicesShuffled} onReorder={setChoicesShuffled}>
                 {choicesShuffled.map((item, key) => (
-                    <Reorder.Item className="ItemReorder" key={item} value={item}>
+                    <Reorder.Item className="itemReorder" key={item} value={item}>
                         {item}
                     </Reorder.Item>
                 ))}
