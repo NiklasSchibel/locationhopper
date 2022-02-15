@@ -1,68 +1,56 @@
 import './stylingPages/Level1.scss';
-import React, {ChangeEventHandler, useContext, useEffect, useState} from "react";
+import React, {ChangeEventHandler, useContext, useEffect} from "react";
 import {TextField} from "@mui/material";
 import smile from "../images/iconSmile.png";
 import {LevelContext} from "../context/LevelProvider";
 import {useNavigate} from "react-router-dom";
 import TimeLeftToPlayAndLevel from "../components/TimeLeftToPlayAndLevel";
-
+import {ALPHABET, LANGUAGE, BASEURL_TTS, KEY} from "../constants/Constants";
+import UseLevelStates from "../customHook/UseLevelStates";
 
 export default function Level1() {
-    const ALPHABET = `ABCDEFGHIJKLMNOPQRSTUVWXYZ`
-    const LANGUAGE: string = `de-de`
-    const STANDARDTEXTVOICE: string = `das ist der Buchstabe `
+    const {level1States} = UseLevelStates()
+    const {
+        randomLetterForTask,
+        setRandomLetterForTask,
+        answer,
+        setAnswer,
+        inputTextField,
+        setInputTextField
+    } = level1States
     const navigate = useNavigate()
     const {levelUp} = useContext(LevelContext)
-    const [randomLetter, setRandomLetter] = useState<string>(" ")
 
-    const requiredLetter: string = randomLetter;
-    const [answer, setAnswer] = useState<boolean>(false)
-    const [text, setText] = useState<string>('');
 
-    const [inputText] = useState<string>("")
-
+    const srcStringForVoiceRSS: string = BASEURL_TTS + KEY + LANGUAGE + "das ist der Buchstabe: " +
+        randomLetterForTask + " schreibe ihn in das Feld unten selbst"
 
     useEffect(() => {
-        setRandomLetter(ALPHABET[Math.floor(Math.random() * ALPHABET.length)])
-// eslint-disable-next-line
+        setRandomLetterForTask(ALPHABET[Math.floor(Math.random() * ALPHABET.length)])
+        // eslint-disable-next-line
     }, [])
 
 
-    //todo: set key later in environment
-    const key: string = `a7aae25de0b446c7adc2571316a7ddfc&`;
-    const srcString: string = "https://api.voicerss.org/?key="
-        + key + "hl=" + LANGUAGE + "&src="
-        + STANDARDTEXTVOICE + randomLetter + ".schreibe ihn in dem Feld unten selbst";
-
-    //todo: set to new format
-    // eslint-disable-next-line
-    const srcString2 = `https://api.voicerss.org/?key=: ${key} ${LANGUAGE} ${STANDARDTEXTVOICE}... this format approximately`;
-
-    const handleChange: ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>
+    /**
+     * this function checks the input value and if correct sets answer true(3sec) and levels up player
+     */
+    const handleChangeOfInputField: ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>
         = (event) => {
         event.preventDefault();
-        if (requiredLetter === event.target.value.toUpperCase()) {
+        if (randomLetterForTask === event.target.value.toUpperCase()) {
             setAnswer(true)
+            setInputTextField(randomLetterForTask)
             setTimeout(function () {
                 setAnswer(false)
                 levelUp()
                 navigate("/AgameBC")
             }, 3000);
-            console.log("same letter true in on change function")
         }
-        console.log("onChange function lief")
-    }
-
-
-    //todo: this works for the first time clicking on the picture than only clicking on the play button
-    const onClickHandleCard = () => {
-        setText(srcString);
     }
 
 
     /**
-     * this function returns a smile when
-     * @param givenAnswer is true
+     * this function returns a smile when useState answer is true
      */
     const AnswerTrueComponent = () => {
         return (
@@ -74,16 +62,16 @@ export default function Level1() {
     return (
         <div>
             <TimeLeftToPlayAndLevel/>
-            <div onClick={onClickHandleCard} className="Level1Page">
-                <h1>{requiredLetter}</h1>
-                <audio autoPlay src={text} controls/>
+            <div className="Level1Page">
+                <h1>{randomLetterForTask}</h1>
+                <audio src={srcStringForVoiceRSS} controls/>
                 <TextField
                     id="outlined"
                     autoComplete="new-password"
-                    placeholder={requiredLetter}
-                    value={inputText}
+                    value={inputTextField}
                     color="success"
-                    onChange={handleChange}
+                    placeholder={randomLetterForTask}
+                    onChange={handleChangeOfInputField}
                     type="text"
                     inputProps={{
                         maxLength: 1,

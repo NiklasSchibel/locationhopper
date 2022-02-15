@@ -1,26 +1,19 @@
 import "./stylingComponents/CardLevel2.scss"
-import {useState} from "react";
 import AnswerChoiceLevel2 from "./AnswerChoiceLevel2";
+import {BASEURL_TTS, KEY, LANGUAGE} from "../constants/Constants";
 
 interface cardProps {
-    key: string
     animalName: string
-    id: string
     imageLink: string
 }
 
 export default function CardLevel2({animalName, imageLink}: cardProps) {
-    const LANGUAGE: string = "de-de";
-    const STANDARDTEXTVOICE: string = "Welcher ist der erste Buchstabe, ich heiße:";
     const firstLetterOfAnimalName = getFirstLetter(animalName);
-    const [text, setText] = useState<string>('');
 
 
-    //todo: set key later in environment
-    const key: string = "a7aae25de0b446c7adc2571316a7ddfc&";
-    const srcString: string = "https://api.voicerss.org/?key="
-        + key + "hl=" + LANGUAGE + "&src="
-        + STANDARDTEXTVOICE + getFirstWord(animalName);
+    const srcStringForVoiceRSS: string = BASEURL_TTS + KEY + LANGUAGE
+        + "Welcher ist der erste Buchstabe, ich heiße:" + getFirstWord(animalName)
+
 
 
     /**
@@ -48,20 +41,13 @@ export default function CardLevel2({animalName, imageLink}: cardProps) {
     }
 
 
-    //todo: this works for the first time clicking on the picture than only clicking on the play button
-    const onClickHandleCard = () => {
-        setText(srcString);
-    }
-
-
 
     return (
-        <div onClick={onClickHandleCard} className="card">
+        <div className="card">
             <img className="image" src={imageLink} alt="Ein Bild"/>
-            <h4>{animalName}</h4>
-            <audio autoPlay src={text} controls/>
+            <h4>{getFirstWord(animalName)}</h4>
+            <audio src={srcStringForVoiceRSS} controls/>
             <AnswerChoiceLevel2
-                animal_name={animalName}
                 firstLetterOfAnimalName={firstLetterOfAnimalName}
             />
         </div>

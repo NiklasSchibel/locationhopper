@@ -30,3 +30,11 @@ export const fetchRandomAnimal = (token?: string) =>
             console.log(error);
         })
 
+export const sendResult = (token?: string) =>
+    axios.post('api/abc/results/', token ? {
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    } : {}).catch((error) => {
+        console.log(error)
+    })

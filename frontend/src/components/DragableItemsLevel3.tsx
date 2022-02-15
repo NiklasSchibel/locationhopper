@@ -5,29 +5,34 @@ import smile from "../images/iconSmile.png";
 import {useNavigate} from "react-router-dom";
 import "./stylingComponents/DragableItemsLevel3.scss"
 
+import UseLevelStates from "../customHook/UseLevelStates";
+
+
 interface DragableItemsProps {
-    key: string
     animalName: string
-    id: string
-    imageLink: string
 }
 
 export default function DragableItemsLevel3({animalName}: DragableItemsProps) {
-    const [answer, setAnswer] = useState<boolean>(false);
-    const navigate = useNavigate();
-    const letterString: string = getStringOfAnimalName(animalName);
-    const letterArray = letterString.split('');
-    const [choicesShuffled, setChoicesShuffled] = useState<Array<string>>([]);
+    const {level3States} = UseLevelStates()
+    const {
+        answer,
+        setAnswer,
+    } = level3States
+
     const {levelUp} = useContext(LevelContext)
+    const navigate = useNavigate();
+    const letterArrayAnimalName = animalName.split('');
+    const [shuffledLettersOfAnimalName, setShuffledLettersOfAnimalName] = useState<Array<string>>([]);
+
 
     useEffect(() => {
-        setChoicesShuffled(shuffleArray(letterArray))
+        setShuffledLettersOfAnimalName(shuffleArray(letterArrayAnimalName))
         // eslint-disable-next-line
     }, [])
 
 
     useEffect(() => {
-        if (checkIfArraysAreTheSame(choicesShuffled, letterArray)) {
+        if (checkIfArraysAreTheSame(shuffledLettersOfAnimalName, letterArrayAnimalName)) {
             setAnswer(true)
             setTimeout(function () {
                 setAnswer(false)
@@ -36,21 +41,7 @@ export default function DragableItemsLevel3({animalName}: DragableItemsProps) {
             }, 3000);
         }
         // eslint-disable-next-line
-    }, [choicesShuffled])
-
-
-    //todo Gecko Fallback anders lösen
-    /**
-     * returns an array of string from the param input, and handling the undefined case
-     * @param word
-     * */
-    function getStringOfAnimalName(word: string): string {
-        if (word !== undefined && word.length > 1) {
-            return word;
-        } else {
-            return "Gecko";
-        }
-    }
+    }, [shuffledLettersOfAnimalName])
 
 
     /**
@@ -87,8 +78,9 @@ export default function DragableItemsLevel3({animalName}: DragableItemsProps) {
 
     return (
         <div>
-            <Reorder.Group axis="y" as="ol" values={choicesShuffled} onReorder={setChoicesShuffled}>
-                {choicesShuffled.map((item, key) => (
+            <Reorder.Group axis="y" as="ol" values={shuffledLettersOfAnimalName} onReorder={setShuffledLettersOfAnimalName}>
+                {shuffledLettersOfAnimalName.map((item, key) => (
+
                     <Reorder.Item className="itemReorder" key={item} value={item}>
                         {item}
                     </Reorder.Item>

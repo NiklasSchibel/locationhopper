@@ -1,4 +1,5 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
+
 import './stylingComponents/TimeLeftToPlayAndLevel.scss';
 import {AuthContext} from "../context/AuthProvider";
 import {LevelContext} from "../context/LevelProvider";
@@ -7,43 +8,30 @@ export default function TimeLeftToPlayAndLevel() {
     const {jwtDecoded} = useContext(AuthContext)
     const {levelOfPlayer} = useContext(LevelContext)
 
-
-    //returns just different formats of time maybe usefull for further feature
+    //ts ignore because if jwtDecoded would be undefined at this point the access
+    // to pages with this page content would have been denied already
     //@ts-ignore
-    const DateNumber: number = jwtDecoded?.exp * 1000
-    //@ts-ignore
-    const ExpirationDate = new Date(DateNumber);
+    const expirationNumber: number = jwtDecoded?.exp * 1000
 
+    const expirationDateTime = new Date(expirationNumber);
     const now = new Date();
+    const timeDiffUntilExpiration: number = expirationDateTime.getTime() - now.getTime()
 
 
-
-    const diff = ExpirationDate.getTime() - now.getTime()
-
-
-
-
-
-    //@ts-ignore
-    const padTime = time => {
+    const padTime = (time: number) => {
         return String(time).length === 1 ? `0${time}` : `${time}`;
     };
 
-    //@ts-ignore
-    const format = time => {
-        // Convert seconds into minutes and take the whole part
+    const format = (time: number) => {
         const minutes = Math.floor(time / 60);
-
-        // Get the seconds left after converting minutes
         const seconds = Math.round(time % 60);
-
-        //Return combined values as string in format mm:ss
         return `${minutes}:${padTime(seconds)}`;
     };
-    const [counter, setCounter] = React.useState(diff/1000);
 
-    React.useEffect(() => {
-        let timer:any;
+    const [counter, setCounter] = useState<number>(timeDiffUntilExpiration / 1000);
+
+    useEffect(() => {
+        let timer: NodeJS.Timeout;
         if (counter > 0) {
             timer = setTimeout(() => setCounter(c => c - 1), 1000);
         }
@@ -56,12 +44,11 @@ export default function TimeLeftToPlayAndLevel() {
     }, [counter]);
 
 
-
-
     return (
-            <div className="timeLeftToPlayAndLevel">
-                {counter === 0 ? "Time over" : <div className="timeLeft"> {format(counter)}</div>}
-                <div className="levelOfPlayer">{levelOfPlayer}</div>
-            </div>
+        <div className="timeLeftToPlayAndLevel">
+            {counter === 0 ? "Time over" : <div className="timeLeft"> {format(counter)}</div>}
+            <div className="levelOfPlayer">{levelOfPlayer}</div>
+        </div>
+
     )
 }
