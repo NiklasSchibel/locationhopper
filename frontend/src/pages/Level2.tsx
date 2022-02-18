@@ -1,16 +1,18 @@
 import "./stylingPages/Level2.scss"
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {fetchRandomAnimal} from "../services/RequestService";
 import CardLevel2 from "../components/CardLevel2";
 import {AnimalData} from "../models/AnimalData";
 import TimeLeftToPlayAndLevel from "../components/TimeLeftToPlayAndLevel";
+import {AuthContext} from "../context/AuthProvider";
+
 
 export default function Level2() {
-
+    const {token} = useContext(AuthContext)
     const [animal, setAnimal] = useState<AnimalData>();
 
     useEffect(() => {
-        fetchRandomAnimal().then(data => setAnimal(data)).catch(e => console.log(e.message))
+        fetchRandomAnimal(token).then(data => setAnimal(data)).catch(e => console.log(e.message))
         // eslint-disable-next-line
     }, [])
 

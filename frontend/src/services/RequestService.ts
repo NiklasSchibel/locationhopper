@@ -1,5 +1,6 @@
 import axios from "axios";
 import {LoginData} from "../models/LoginData";
+import {letterData} from "../models/LetterData";
 
 
 export const loginRequest = (login: LoginData) =>
@@ -25,16 +26,33 @@ export const fetchRandomAnimal = (token?: string) =>
         headers: {
             "Authorization": "Bearer " + token
         }
-    } : {}).then(response => response.data)
+    } : {})
+        .then(response => response.data)
         .catch((error) => {
             console.log(error);
         })
 
-export const sendResult = (token?: string) =>
-    axios.post('api/abc/results/', token ? {
+
+export const getResults = (token?: string) =>
+    axios.get(`api/abc/results`,token ? {
         headers: {
-            "Authorization": "Bearer " + token
+            "Authorization": token
         }
-    } : {}).catch((error) => {
-        console.log(error)
-    })
+    } : {})
+        .then(response => response.data)
+        .catch((error) => {
+            console.log(error)
+        })
+
+
+export const sendResultLetter = (resultLetter: letterData, token?: string) =>
+    axios.post(`api/abc/results/`, resultLetter,token ? {
+        headers: {
+            "Authorization": token
+        }
+    } : {})
+        .then(()=>{console.log(resultLetter)})
+        .catch((error) => {
+            console.log(error)
+        })
+

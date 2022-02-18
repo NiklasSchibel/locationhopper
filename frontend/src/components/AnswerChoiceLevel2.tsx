@@ -6,6 +6,9 @@ import {LevelContext} from "../context/LevelProvider";
 import {useNavigate} from "react-router-dom";
 import {ALPHABET} from "../constants/Constants";
 import UseLevelStates from "../customHook/UseLevelStates";
+import {sendResultLetter} from "../services/RequestService";
+import {AuthContext} from "../context/AuthProvider";
+
 
 interface AnswerButtonChoiceProps {
     firstLetterOfAnimalName: string
@@ -13,6 +16,8 @@ interface AnswerButtonChoiceProps {
 
 export default function AnswerChoiceLevel2({firstLetterOfAnimalName}: AnswerButtonChoiceProps) {
     const {levelUp} = useContext(LevelContext)
+    const {token} = useContext(AuthContext)
+
     const navigate =  useNavigate()
     const {level2States} = UseLevelStates()
     const [choicesShuffled, setChoicesShuffled] = useState<Array<string | undefined>>([])
@@ -70,6 +75,7 @@ export default function AnswerChoiceLevel2({firstLetterOfAnimalName}: AnswerButt
     const onClickHandleButton = (letter: string | undefined) => {
         if (letter === firstLetterOfAnimalName) {
             level2States.setAnswer(true)
+            sendResultLetter( {letter: letter}, token)
             setTimeout(function () {
                 level2States.setAnswer(false)
                 levelUp()

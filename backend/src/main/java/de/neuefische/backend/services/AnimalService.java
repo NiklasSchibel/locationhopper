@@ -1,15 +1,20 @@
 package de.neuefische.backend.services;
 
 import de.neuefische.backend.BackendApplication;
+import de.neuefische.backend.dto.AnimalDTO;
+import de.neuefische.backend.exception.AnimalDoesNotExistException;
 import de.neuefische.backend.models.AnimalData;
 import de.neuefische.backend.repositories.AnimalRepository;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 public class AnimalService {
@@ -24,20 +29,21 @@ public class AnimalService {
         this.animalRepository = animalRepository;
     }
 
-    public List<AnimalData> findAllAnimals() {
-        return animalRepository.findAll();
+    public List<AnimalDTO> findAllAnimals() {
+        return animalRepository.findAll().stream().map(AnimalDTO::new).collect(Collectors.toList());
     }
 
-    public Optional<AnimalData> getAnimalByID(String id) {
-        return animalRepository.findById(id);
-
+    public AnimalDTO getAnimalByID(String id) throws AnimalDoesNotExistException {
+        return new AnimalDTO(animalRepository.findById(id)
+                .orElseThrow(() -> new AnimalDoesNotExistException("Animal with id " + id + " not found!")));
     }
 
-    public Optional<AnimalData> getRandomAnimal() {
+    public AnimalDTO getRandomAnimal() throws ResponseStatusException {
         int min = 1;
-        int max = animalRepository.findAll().size()-1;
-        int value = random.nextInt(max + min) + min;
-        String searchID = Integer.toString(value);
-        return animalRepository.findById(searchID);
+        int max = animalRepository.findAll().size() - 1;
+        int randomNumber = random.nextInt(max + min) + min;
+        String searchID = Integer.toString(randomNumber);
+        return new AnimalDTO(animalRepository.findById(searchID)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "problem: could not get random animal from mongoDB")));
     }
 }

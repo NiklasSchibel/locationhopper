@@ -1,19 +1,22 @@
 import "./stylingPages/Level3.scss"
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import DragableItemsLevel3 from "../components/DragableItemsLevel3";
 import {fetchRandomAnimal} from "../services/RequestService";
 import {AnimalData} from "../models/AnimalData";
 import {useNavigate} from "react-router-dom";
 import TimeLeftToPlayAndLevel from "../components/TimeLeftToPlayAndLevel";
 import {LANGUAGE, BASEURL_TTS, KEY} from "../constants/Constants";
+import {AuthContext} from "../context/AuthProvider";
 
 
 export default function Level3() {
-    const [animal, setAnimal] = useState<AnimalData>()
-    const navigate = useNavigate()
+    const {token} = useContext(AuthContext)
+    const [animal, setAnimal] = useState<AnimalData>();
+    const navigate = useNavigate();
+
 
     useEffect(() => {
-        fetchRandomAnimal().then(data => setAnimal(data)).catch(e => console.log(e.message))
+        fetchRandomAnimal(token).then(data => setAnimal(data)).catch(e => console.log(e.message))
         // eslint-disable-next-line
     }, [])
 

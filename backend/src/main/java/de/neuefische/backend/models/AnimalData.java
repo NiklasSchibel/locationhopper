@@ -13,9 +13,9 @@ public class AnimalData {
 
     @NonNull
     @Id
-    String id;
+    private String id;
 
-    String deName;
-    String imageLink;
-    String startingLetter;
+    private String deName;
+    private String imageLink;
+    private String startingLetter;
 }

@@ -1,0 +1,24 @@
+.resultsPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  width: 100vw;
+  height: 100vh;
+  background: #ffaa00;
+  overflow: hidden;
+}
+
+.tagCloud{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 2rem;
+}
+
+.audioResult{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 2rem;
+}

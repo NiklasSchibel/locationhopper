@@ -9,6 +9,7 @@ import LevelProvider from "./context/LevelProvider";
 import Level1 from "./pages/Level1";
 import Level2 from "./pages/Level2";
 import Level3 from "./pages/Level3";
+import Results from "./pages/Results";
 
 export default function App() {
     return (
@@ -35,6 +36,11 @@ export default function App() {
                             <RequireAuth>
                                 <Level3/>
                             </RequireAuth>}/>
+                        <Route path="/results" element={
+                            <RequireAuth>
+                                <Results/>
+                            </RequireAuth>
+                        }/>
 
                     </Routes>
                 </BrowserRouter>
