@@ -17,7 +17,6 @@ export default function Results() {
     useEffect(() => {
         getResults(token)
             .then(result => {
-                console.log(result)
                 return result;
             })
             .then(result => setResults(result.lettersCount))

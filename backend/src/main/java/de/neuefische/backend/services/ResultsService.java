@@ -40,15 +40,4 @@ public class ResultsService {
     }
 
 
-
-
-    public void sendDBEntry(String userName) throws ResultDoesNotExistException {
-        ResultsData resultdata = new ResultsData(userName);
-//        ResultsDTO result = new ResultsDTO(resultdata);
-        resultsRepository.save(resultdata);
-        LOG.info("following result object was saved to Mongo DB: ");
-        LOG.info(resultdata);
-    }
-
-
 }

@@ -43,8 +43,6 @@ export default function Level1() {
         if (randomLetterForTask === event.target.value.toUpperCase()) {
             setAnswer(true)
             sendResultLetter( {letter: randomLetterForTask}, token)
-            console.log(randomLetterForTask)
-            console.log(token)
             setInputTextField(randomLetterForTask)
             setTimeout(function () {
                 setAnswer(false)

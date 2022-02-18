@@ -1,6 +1,6 @@
 package de.neuefische.backend.controller;
 
-import de.neuefische.backend.models.LetterObject;
+import de.neuefische.backend.models.LetterData;
 import de.neuefische.backend.services.JWTUtils;
 import de.neuefische.backend.models.ResultsData;
 import de.neuefische.backend.services.ResultsService;
@@ -8,6 +8,7 @@ import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 
 
 @RestController
@@ -24,16 +25,15 @@ public class ResultsController {
 
     @GetMapping(path = "")
     @ResponseBody
-    public ResultsData getAllResultsForThisUser(@RequestHeader("Authorization") String token) {
+    public ResultsData getAllResultsForThisUser(Principal principal) {
         LOG.info("get all results for user");
-        LOG.info("this is the header token: " + token);
-        return resultsService.getResultsByName(jwtutils.extractUserName(token));
+        return resultsService.getResultsByName(principal.getName());
     }
 
     @PostMapping(path = "")
-    public void sendLetterResultToBackendForThisUser(@RequestBody LetterObject letter, @RequestHeader("Authorization") String token) {
-        LOG.info("send one letter: " + letter + ", result for user " + jwtutils.extractUserName(token) + "to backend");
-        resultsService.sentLetterResultToDB(letter.getLetter(), jwtutils.extractUserName(token));
+    public void sendLetterResultToBackendForThisUser(@RequestBody LetterData letter, Principal principal) {
+        LOG.info("send one letter: " + letter + ", result for user " + principal.getName() + "to backend");
+        resultsService.sentLetterResultToDB(letter.getLetter(), principal.getName());
     }
 
 }

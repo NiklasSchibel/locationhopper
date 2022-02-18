@@ -51,7 +51,6 @@ export const sendResultLetter = (resultLetter: letterData, token?: string) =>
             "Authorization": token
         }
     } : {})
-        .then(()=>{console.log(resultLetter)})
         .catch((error) => {
             console.log(error)
         })

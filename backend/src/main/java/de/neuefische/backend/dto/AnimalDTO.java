@@ -13,7 +13,6 @@ public class AnimalDTO {
 
 
     public AnimalDTO(AnimalData animalData) {
-        super();
         this.id = animalData.getId();
         this.deName = animalData.getDeName();
         this.imageLink = animalData.getImageLink();
