@@ -18,9 +18,9 @@ public class JWTUtils {
     //@Value(value="${SECRET_KEY}")
     //set SECRET KEY into environment variable to run configuration/modify
     // rename to private String secret;
-//    @Value("${secret}")
-//    private String secret;
-    static final String secret = "derSecretWirdSpaeterInDieHerokuConfigVariableGeschrieben";
+    @Value("${SECRET_KEY}")
+    private String secret;
+//    static final String secret = "derSecretWirdSpaeterInDieHerokuConfigVariableGeschrieben";
 //    static final String secret = System.getenv("secret"); //this works in dev
 
     public String createToken(Map<String, Object> claims, String subject, int timeout) {

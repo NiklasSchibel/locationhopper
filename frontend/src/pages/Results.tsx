@@ -69,7 +69,7 @@ export default function Results() {
                       minSize={10}
                       maxSize={120}
                       tags={data}
-                      onClick={(tag: { value: any; }) => onClickHandle(tag.value)}
+                      onClick={(tag: { value: string; }) => onClickHandle(tag.value)}
             />
 
             <audio className="audioResult" autoPlay src={srcStringForVoiceRSS} controls/>
