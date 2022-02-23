@@ -68,7 +68,7 @@ export default function Level1() {
             <TimeLeftToPlayAndLevel/>
             <div className="Level1Page">
                 <h1>{randomLetterForTask}</h1>
-                <audio src={srcStringForVoiceRSS} controls/>
+                <audio autoPlay src={srcStringForVoiceRSS} controls/>
                 <TextField
                     id="outlined"
                     autoComplete="new-password"

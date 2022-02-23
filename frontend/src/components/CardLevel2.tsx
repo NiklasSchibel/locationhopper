@@ -46,7 +46,7 @@ export default function CardLevel2({animalName, imageLink}: cardProps) {
         <div className="card">
             <img className="image" src={imageLink} alt="Ein Bild"/>
             <h4>{getFirstWord(animalName)}</h4>
-            <audio src={srcStringForVoiceRSS} controls/>
+            <audio autoPlay src={srcStringForVoiceRSS} controls/>
             <AnswerChoiceLevel2
                 firstLetterOfAnimalName={firstLetterOfAnimalName}
             />
