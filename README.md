@@ -3,6 +3,6 @@
 agameBC will be an abc learning game, supporting preschool kids.
 
 
-<img src="https://user-images.githubusercontent.com/95278041/154852518-c1ad0d82-63db-4202-88b9-74559cab3104.png" alt="drawing" width="200"/>
+<img src="ScreenshotAgameBC.jpeg![grafik](https://user-images.githubusercontent.com/95278041/155284517-275a70b3-e50b-4588-8cfe-340e85519355.png)" alt="drawing" width="200"/>
 
 
