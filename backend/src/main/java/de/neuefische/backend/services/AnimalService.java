@@ -41,7 +41,7 @@ public class AnimalService {
     public AnimalDTO getRandomAnimal() throws ResponseStatusException {
         int min = 1;
         int max = animalRepository.findAll().size() - 1;
-        int randomNumber = random.nextInt(max + min) + min;
+        int randomNumber = random.nextInt(max + min) + min; //hier den mock verwenden für random.nextInt
         String searchID = Integer.toString(randomNumber);
         return new AnimalDTO(animalRepository.findById(searchID)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "problem: could not get random animal from mongoDB")));

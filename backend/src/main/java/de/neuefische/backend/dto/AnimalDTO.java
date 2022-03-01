@@ -4,6 +4,8 @@ import de.neuefische.backend.models.AnimalData;
 import lombok.*;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AnimalDTO {
 
     String id;

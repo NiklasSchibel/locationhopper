@@ -1,6 +1,6 @@
 # AgameBC
 
-AgameBC is an abc learning game, supporting preschool kids.
+AgameBC is an abc learning game, supporting preschool kids. With help of an Text-To-Speech API letters and words can be practiced. The training progress is saved to a Database and shown to the user.
 
 
 <img src="https://user-images.githubusercontent.com/95278041/155284517-275a70b3-e50b-4588-8cfe-340e85519355.png" alt="results" width="200"/>

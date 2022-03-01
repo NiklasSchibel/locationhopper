@@ -61,7 +61,7 @@ class LoginControllerTest {
 
         LoginData loginData = new LoginData("some-user","secretPassword",15);
 
-        //WHEN
+        //When
         ResponseEntity<String> login = webTestClient.post()
                 .uri("http://localhost:"+port+"/auth/login")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -72,7 +72,7 @@ class LoginControllerTest {
 
         String token = login.getBody();
 
-        //THEN
+        //Then
         assertNotNull(token);
     }
 
@@ -86,7 +86,7 @@ class LoginControllerTest {
 
         LoginData loginData = new LoginData("some-wrong-user","someWrongPassword",15);
 
-        //WHEN
+        //When
         ResponseEntity<Error> loginError = webTestClient.post()
                 .uri("http://localhost:"+port+"/auth/login")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -97,19 +97,8 @@ class LoginControllerTest {
                 .toEntity(Error.class)
                 .block();
 
-        //THEN
+        //Then
         assertThat(loginError.getStatusCode(),is(HttpStatus.BAD_REQUEST));
     }
 
 }
-
-//        //WHEN
-//        ResponseEntity<String> getHello = webTestClient.get()
-//                .uri("http://localhost:"+port+"/api/jwt")
-//                .header("Authorization","Bearer"+ token)
-//                .retrieve()
-//                .toEntity(String.class)
-//                .block();
-//        //THEN
-//        assertThat(getHello.getStatusCode(),is(HttpStatus.OK));
-//        assertThat(getHello.getBody(),is("Darfst du nicht!!!"));
