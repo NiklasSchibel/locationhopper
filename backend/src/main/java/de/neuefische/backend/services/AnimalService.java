@@ -1,25 +1,19 @@
 package de.neuefische.backend.services;
 
-import de.neuefische.backend.BackendApplication;
 import de.neuefische.backend.dto.AnimalDTO;
 import de.neuefische.backend.exception.AnimalDoesNotExistException;
-import de.neuefische.backend.models.AnimalData;
 import de.neuefische.backend.repositories.AnimalRepository;
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
 public class AnimalService {
 
-    private static final Log LOG = LogFactory.getLog(BackendApplication.class);
 
     private final AnimalRepository animalRepository;
 

@@ -1,7 +1,5 @@
 package de.neuefische.backend.services;
 
-import de.neuefische.backend.controller.AnimalController;
-import de.neuefische.backend.dto.ResultsDTO;
 import de.neuefische.backend.exception.ResultDoesNotExistException;
 import de.neuefische.backend.models.ResultsData;
 import de.neuefische.backend.repositories.ResultsRepository;
@@ -9,10 +7,7 @@ import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 
 
 @Service

@@ -1,7 +1,6 @@
 package de.neuefische.backend.controller;
 
 import de.neuefische.backend.models.LetterData;
-import de.neuefische.backend.services.JWTUtils;
 import de.neuefische.backend.models.ResultsData;
 import de.neuefische.backend.services.ResultsService;
 import org.apache.juli.logging.Log;
@@ -16,7 +15,6 @@ import java.security.Principal;
 public class ResultsController {
     private static final Log LOG = LogFactory.getLog(ResultsController.class);
     private final ResultsService resultsService;
-    private final JWTUtils jwtutils = new JWTUtils();
 
     public ResultsController(ResultsService resultsService) {
         this.resultsService = resultsService;
