@@ -1,9 +1,14 @@
 .App {
   display: flex;
   flex-direction: column;
+  background-color: red;
 }
 
+#map { height: 180px; }
 
+.mapContainer {
+  height: 180px;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
