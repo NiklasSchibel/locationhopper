@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 
 import {
@@ -9,7 +9,9 @@ import {
     TileLayer,
     // useMapEvents,
 } from 'react-leaflet'
-// import ShowPlaces from "./ShowPlaces";
+import Place from "../models/Place";
+import {getPlaces} from "../service/RequestService";
+import ShowPlaces from "./ShowPlaces";
 
 
 
@@ -17,13 +19,13 @@ import {
 export default function Map2() {
 
 
-    // const [restPlaces, setRestPlaces] = useState<Place[]>([])
-    //
-    // useEffect(() => {
-    //     getPlaces().then(data => setRestPlaces(data))
-    //     console.log(restPlaces)
-    // }, [])
+    const [restPlaces, setRestPlaces] = useState<Place[]>([])
 
+    useEffect(() => {
+        getPlaces().then(data => setRestPlaces(data))
+
+    }, [])
+    console.log(restPlaces)
     // function LocationMarker() {
     //     const [position, setPosition] = useState(null)
     //
@@ -56,13 +58,8 @@ return(
             Munich. <br /> click once to locate.
         </Popup>
     </Marker>
-    <Marker position={[48.135, 11.581]}>
-        <Popup>
-            Munich. <br /> click once to locate.
-        </Popup>
-    </Marker>
     {/*<LocationMarker />*/}
-    {/*<ShowPlaces restPlaces={restPlaces}/>*/}
+    <ShowPlaces restPlaces={restPlaces}/>
 </MapContainer>
 </>
 )

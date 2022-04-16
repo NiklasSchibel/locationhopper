@@ -1,8 +1,7 @@
 import "./ShowPlaces.scss";
 import React from "react";
-// @ts-ignore
 import L from "leaflet";
-import {Marker} from "react-leaflet";
+import {Marker, Popup, Tooltip} from "react-leaflet";
 import Place from "../models/Place";
 
 
@@ -11,22 +10,24 @@ const placeIcon = new L.Icon({
     iconSize: [35, 35]
 });
 
-interface ShowPlacesProps{
+interface ShowPlacesProps {
     restPlaces: Place[]
 }
 
-export default function ShowPlaces(props: ShowPlacesProps){
+export default function ShowPlaces(props: ShowPlacesProps) {
 
     const {restPlaces} = props
 
     return (
         <>
-            {restPlaces.map((bagPlace) => (
+            {restPlaces.map((place) => (
                 <Marker
-                    key={bagPlace.id}
-                    position={[bagPlace.lat, bagPlace.lng]}
-                    // icon={placeIcon}
+                    key={place.id}
+                    position={[place.lat, place.lng]}
+                    icon={placeIcon}
                 >
+                    <Popup>standard Popup</Popup>
+                    <Tooltip>nice</Tooltip>
                 </Marker>))}
         </>
     );
