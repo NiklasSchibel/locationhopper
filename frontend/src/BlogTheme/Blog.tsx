@@ -12,6 +12,7 @@ import FeaturedPost from './FeaturedPost';
 // import Main from './Main';
 // import Sidebar from './Sidebar';
 import Footer from './Footer';
+import Map2 from "../components/Map2";
 // // @ts-ignore
 // import post1 from './blog-post.1.md';
 // // @ts-ignore
@@ -95,7 +96,8 @@ export default function Blog() {
             <Container maxWidth="lg">
                 <Header title="Restaurant M-App" sections={sections} />
                 <main>
-                    <MainFeaturedPost post={mainFeaturedPost} />
+                    {/*<MainFeaturedPost post={mainFeaturedPost} />*/}
+                    <Map2/>
                     <Grid container spacing={4}>
                         {featuredPosts.map((post) => (
                             <FeaturedPost key={post.title} post={post} />

@@ -12,11 +12,12 @@ const queryClient = new QueryClient();
 export default function App() {
     return (
         <>
-         {/*<Blog/>*/}
+            {/*<QueryClientProvider client={queryClient}>*/}
+            {/*     <Map/>*/}
+            {/*</QueryClientProvider>*/}
+         <Blog/>
 
-                {/*<QueryClientProvider client={queryClient}>*/}
-                {/*     <Map/>*/}
-                {/*</QueryClientProvider>*/}
+
                 <MapContainer id="map" center={[51.505, -0.09]} zoom={13}>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
