@@ -12,6 +12,8 @@ import FeaturedPost from './FeaturedPost';
 // import Sidebar from './Sidebar';
 import Footer from './Footer';
 import Map2 from "../components/Map2";
+import {useState} from "react";
+import {PlaceCreationDTO} from "../models/PlaceCreationDTO";
 // // @ts-ignore
 // import post1 from './blog-post.1.md';
 // // @ts-ignore
@@ -19,18 +21,18 @@ import Map2 from "../components/Map2";
 // // @ts-ignore
 // import post3 from './blog-post.3.md';
 
-const sections = [
-    { title: 'Technology', url: '#' },
-    { title: 'Design', url: '#' },
-    { title: 'Culture', url: '#' },
-    { title: 'Business', url: '#' },
-    { title: 'Politics', url: '#' },
-    { title: 'Opinion', url: '#' },
-    { title: 'Science', url: '#' },
-    { title: 'Health', url: '#' },
-    { title: 'Style', url: '#' },
-    { title: 'Travel', url: '#' },
-];
+// const sections = [
+    // { title: 'find your current location here', url: '#' },
+    // { title: 'Design', url: '#' },
+    // { title: 'Culture', url: '#' },
+    // { title: 'Business', url: '#' },
+    // { title: 'Politics', url: '#' },
+    // { title: 'Opinion', url: '#' },
+    // { title: 'Science', url: '#' },
+    // { title: 'Health', url: '#' },
+    // { title: 'Style', url: '#' },
+    // { title: 'Travel', url: '#' },
+// ];
 
 // const mainFeaturedPost = {
 //     title: 'Title of a longer featured blog post',
@@ -88,15 +90,21 @@ const featuredPosts = [
 
 const theme = createTheme();
 
+
 export default function Blog() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Container maxWidth="lg">
-                <Header title="Restaurant M-App" sections={sections} />
+                <Header title="Restaurant M-App"
+                        // sections={sections}
+
+                />
                 <main>
                     {/*<MainFeaturedPost post={mainFeaturedPost} />*/}
-                    <Map2/>
+                    <Map2
+
+                    />
                     <Grid container spacing={4}>
                         {featuredPosts.map((post) => (
                             <FeaturedPost key={post.title} post={post} />
