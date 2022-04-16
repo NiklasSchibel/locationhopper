@@ -21,6 +21,7 @@ public class PlaceService {
     }
 
     public List<Place> getAll() {
+        LOG.info("Places have been fetched from Backend: "+ LocalDateTime.now());
         return placeRepo.findAll();
     }
 
