@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import {Button} from "@mui/material";
-import {Marker, Popup, useMapEvents} from "react-leaflet";
+// import {Marker, Popup, useMapEvents} from "react-leaflet";
 // import Link from '@mui/material/Link';
 
 interface HeaderProps {
@@ -19,7 +19,7 @@ interface HeaderProps {
 
 
 export default function Header(props: HeaderProps) {
-    const { sections, title } = props;
+    const { title } = props;
 
 
 

@@ -12,8 +12,8 @@ import FeaturedPost from './FeaturedPost';
 // import Sidebar from './Sidebar';
 import Footer from './Footer';
 import Map2 from "../components/Map2";
-import {useState} from "react";
-import {PlaceCreationDTO} from "../models/PlaceCreationDTO";
+// import {useState} from "react";
+// import {PlaceCreationDTO} from "../models/PlaceCreationDTO";
 // // @ts-ignore
 // import post1 from './blog-post.1.md';
 // // @ts-ignore

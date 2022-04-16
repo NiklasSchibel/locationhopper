@@ -1,5 +1,5 @@
 
-import React, {Dispatch, SetStateAction, useCallback, useEffect, useMemo, useRef, useState} from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState} from "react";
 
 
 import {
@@ -12,7 +12,7 @@ import {
 import Place from "../models/Place";
 import {getPlaces} from "../service/RequestService";
 import ShowPlaces from "./ShowPlaces";
-import {PlaceCreationDTO} from "../models/PlaceCreationDTO";
+// import {PlaceCreationDTO} from "../models/PlaceCreationDTO";
 
 
 const center = {
