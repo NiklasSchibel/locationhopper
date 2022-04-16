@@ -1,7 +1,7 @@
 
-import React, {useEffect} from "react";
+import React from "react";
 
-import { useState } from 'react'
+
 import {
     MapContainer,
     Marker,
@@ -10,20 +10,19 @@ import {
     // useMapEvents,
 } from 'react-leaflet'
 // import ShowPlaces from "./ShowPlaces";
-import Place from "../models/Place";
-import {getPlaces} from "../service/RequestService";
+
 
 
 
 export default function Map2() {
 
 
-    const [restPlaces, setRestPlaces] = useState<Place[]>([])
-
-    useEffect(() => {
-        getPlaces().then(data => setRestPlaces(data))
-        console.log(restPlaces)
-    }, [])
+    // const [restPlaces, setRestPlaces] = useState<Place[]>([])
+    //
+    // useEffect(() => {
+    //     getPlaces().then(data => setRestPlaces(data))
+    //     console.log(restPlaces)
+    // }, [])
 
     // function LocationMarker() {
     //     const [position, setPosition] = useState(null)
@@ -33,12 +32,11 @@ export default function Map2() {
     //             map.locate()
     //         },
     //         locationfound(e) {
-    {/*            // @ts-ignore*/}
     //             setPosition(e.latlng)
     //             map.flyTo(e.latlng, map.getZoom())
-    {/*        },*/}
-    {/*    })*/}
-
+    //         },
+    //
+    //
     //     return position === null ? null : (
     //     <Marker position={position}>
     //         <Popup>You are here</Popup>
