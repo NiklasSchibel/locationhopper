@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import Blog from "./BlogTheme/Blog";
-import Map from "./components/Map";
-import {QueryClient, QueryClientProvider} from "react-query";
+
+// import {QueryClient, QueryClientProvider} from "react-query";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
 
 
 
