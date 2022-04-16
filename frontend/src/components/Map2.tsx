@@ -7,9 +7,9 @@ import {
     Marker,
     Popup,
     TileLayer,
-    useMapEvents,
+    // useMapEvents,
 } from 'react-leaflet'
-import ShowPlaces from "./ShowPlaces";
+// import ShowPlaces from "./ShowPlaces";
 import Place from "../models/Place";
 import {getPlaces} from "../service/RequestService";
 
