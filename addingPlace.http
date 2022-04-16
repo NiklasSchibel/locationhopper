@@ -1,0 +1,7 @@
+POST http://localhost:8080/api/places
+Content-Type: application/json
+
+{
+  "lat": 48.135,
+  "lng": 11.581
+}
