@@ -3,7 +3,11 @@
   flex-direction: column;
 }
 
+#map { height: 180px; }
 
+.mapContainer {
+  height: 180px;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
