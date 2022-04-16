@@ -41,9 +41,9 @@ return(
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-    <Marker position={[48.135, 11.581]}>
+    <Marker position={[48.1369, 11.569]}>
         <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            Munich. <br /> click once to locate.
         </Popup>
     </Marker>
     <LocationMarker />
