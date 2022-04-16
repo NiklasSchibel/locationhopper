@@ -16,6 +16,7 @@ export default function Map2() {
 
     function LocationMarker() {
         const [position, setPosition] = useState(null)
+
         const map = useMapEvents({
             click() {
                 map.locate()
