@@ -23,4 +23,9 @@ public class PlaceController {
     public Place createPlaces(@RequestBody PlaceDTO placeDTO){
         return placeService.createPlace(placeDTO);
     }
+
+    @DeleteMapping("/{id}")
+    public void deletePlace(@PathVariable String id) {
+        placeService.deletePlace(id);
+    }
 }

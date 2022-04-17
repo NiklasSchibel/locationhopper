@@ -24,13 +24,11 @@ export const createPlace = (newMarker: PlaceCreationDTO, token?: string) => {
 }
 
 
+export const deletePlace = (id: string, token?: string) => {
+    return axios.delete(`/api/places/${id}`, token ? {
+        headers: {
+            "Authorization": token
+        }
+    } : {})
+        .then(response => response.data)}
 
-
-// export const deleteAppointment = (id: string, token: string) => {
-//     return axios.delete(`/api/appointments/${id}`, token ? {
-//         headers: {
-//             "Authorization": token
-//         }
-//     }: {})
-//         .then(response => response.data)
-// }

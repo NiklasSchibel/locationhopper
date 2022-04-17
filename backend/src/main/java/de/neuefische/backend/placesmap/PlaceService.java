@@ -36,4 +36,10 @@ public class PlaceService {
         return placeRepo.insert(place);
 
     }
+
+    public void deletePlace(String id) {
+        if(placeRepo.existsById(id)){
+            placeRepo.deleteById(id);
+        }
+    }
 }
