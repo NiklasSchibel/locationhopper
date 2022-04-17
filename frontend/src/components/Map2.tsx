@@ -80,7 +80,8 @@ export default function Map2(props: Map2Props) {
                 // @ts-ignore
                 setBbox(e.bounds.toBBoxString().split(","));
             });
-        }, );
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
 
         return currentposition === null ? null : (
             <Marker position={currentposition}
