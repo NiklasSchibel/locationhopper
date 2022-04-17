@@ -63,39 +63,6 @@ export default function Map2(props: Map2Props) {
 
 
 
-
-
-    // function LocationMarker() {
-    //     const [position, setPosition] = useState(null)
-    //     const map = useMapEvents({
-    //         click() {
-    //             map.locate()
-    //         },
-    {/*        locationfound(e) {*/}
-    {/*            // @ts-ignore*/}
-    {/*            setPosition(e.latlng)*/}
-    {/*            map.flyTo(e.latlng, map.getZoom())*/}
-    //         },
-    //     })
-    //
-    //     return position === null ? null : (
-    //         <Marker
-    {/*                position={ position }*/}
-    //                 draggable={draggable}
-    //                 eventHandlers={eventHandlers}
-    {/*                ref={markerRef}>*/}
-    {/*            <Popup minWidth={90}>*/}
-    {/*    <span onClick={toggleDraggable}>*/}
-    {/*      {draggable*/}
-    //           ? 'Marker is draggable'
-    //           : 'Click here to make marker draggable'}
-    //     </span>
-    //             </Popup>
-    //         </Marker>
-    //     )
-    // }
-
-
     function LocationMarker() {
         const [currentposition, setCurrentPosition] = useState(null);
         const [bbox, setBbox] = useState([]);
@@ -113,7 +80,7 @@ export default function Map2(props: Map2Props) {
                 // @ts-ignore
                 setBbox(e.bounds.toBBoxString().split(","));
             });
-        }, []);
+        }, );
 
         return currentposition === null ? null : (
             <Marker position={currentposition}
