@@ -3,6 +3,7 @@ import React from "react";
 import L from "leaflet";
 import {Marker, Popup, Tooltip} from "react-leaflet";
 import Place from "../models/Place";
+import {deletePlace} from "../service/RequestService";
 
 
 const placeIcon = new L.Icon({
@@ -18,6 +19,11 @@ export default function ShowPlaces(props: ShowPlacesProps) {
 
     const {restPlaces} = props
 
+    function deletePlaceInMapp(id: string){
+        alert('clicked' + id);
+        deletePlace(id);
+    }
+
     return (
         <>
             {restPlaces.map((place) => (
@@ -26,8 +32,14 @@ export default function ShowPlaces(props: ShowPlacesProps) {
                     position={[place.lat, place.lng]}
                     icon={placeIcon}
                 >
-                    <Popup>standard Popup</Popup>
-                    <Tooltip>nice</Tooltip>
+                    <Popup>
+                         <span onClick={()=>deletePlaceInMapp(place.id)}>
+                        Deleted if clicked!
+                        </span>
+                    </Popup>
+                    <Tooltip>
+                       nice
+                    </Tooltip>
                 </Marker>))}
         </>
     );
