@@ -125,6 +125,7 @@ export default function Blog() {
                 title="Footer"
                 description="Something here to give the footer a purpose!"
             />
+            {/*<img src="../resources/images/mann3d.jpg" alt="a map of London"/>*/}
         </ThemeProvider>
     );
 }

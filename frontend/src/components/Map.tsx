@@ -5,7 +5,7 @@ import useGeoLocation from "../hooks/useGeoLocation";
 import L from "leaflet";
 import './Map.scss';
 import 'leaflet/dist/leaflet.css';
-import {createPlace, getPlaces} from "../service/RequestService";
+import {createPlace, getAllThePlaces} from "../service/RequestService";
 import Place from "../models/Place";
 import {Button} from "@mui/material";
 import {Language} from "@mui/icons-material";
@@ -27,7 +27,7 @@ export default function Map() {
 
 
     useEffect(() => {
-        getPlaces().then(data => setRestPlaces(data))
+        getAllThePlaces().then(data => setRestPlaces(data))
     }, [])
 
     const showLocation = useCallback(() => {
@@ -38,7 +38,7 @@ export default function Map() {
 
     const createMarkerAtLocation = () => {
         if (location.coordinates && map) {
-            createPlace(location.coordinates).then(() => getPlaces().then(data => setRestPlaces(data)));
+            createPlace(location.coordinates).then(() => getAllThePlaces().then(data => setRestPlaces(data)));
         }
     }
 

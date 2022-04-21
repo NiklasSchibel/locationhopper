@@ -28,18 +28,18 @@ export default function Header(props: HeaderProps) {
             <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 {/*<Button size="small">Subscribe</Button>*/}
 
-                <IconButton>
-                    <SearchIcon />
-                    <div>find me</div>
-                </IconButton>
-                <Button variant="outlined" size="small">
-                    find me
-                    <SearchIcon />
-                </Button>
-                <Button variant="outlined" size="small">
-                    <div>find me</div>
-                    <SearchIcon />
-                </Button>
+                {/*<IconButton>*/}
+                {/*    <SearchIcon />*/}
+                {/*    <div>find me</div>*/}
+                {/*</IconButton>*/}
+                {/*<Button variant="outlined" size="small">*/}
+                {/*    find me*/}
+                {/*    <SearchIcon />*/}
+                {/*</Button>*/}
+                {/*<Button variant="outlined" size="small">*/}
+                {/*    <div>find me</div>*/}
+                {/*    <SearchIcon />*/}
+                {/*</Button>*/}
                 <Typography
                     component="h2"
                     variant="h5"
@@ -52,7 +52,7 @@ export default function Header(props: HeaderProps) {
                 </Typography>
 
                 <IconButton>
-                    find me
+                    don't get it
                     <SearchIcon />
                 </IconButton>
                 {/*<Button variant="outlined" size="small">*/}

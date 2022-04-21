@@ -3,9 +3,14 @@ import {PlaceCreationDTO} from "../models/PlaceCreationDTO";
 
 
 
-export const getPlaces =  () => {
+export const getAllThePlaces =  () => {
     return axios.get("/api/places").then(response => response.data)
 }
+
+export const getAllThePlacesByType =  (type: string) => {
+    return axios.get("/api/places/"+type).then(response => response.data)
+}
+
 
 
 export const createPlace = (newMarker: PlaceCreationDTO, token?: string) => {

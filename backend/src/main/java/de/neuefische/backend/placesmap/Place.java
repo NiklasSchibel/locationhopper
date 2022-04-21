@@ -21,13 +21,15 @@ public class Place {
     private LocalDateTime creationDate;
     private double lat;
     private double lng;
+    private PlaceType placeType;
 
 
-    public static Place newPlace(LocalDateTime creationDate, double lat, double lng){
+    public static Place newPlace(LocalDateTime creationDate, double lat, double lng, PlaceType placeType){
         return Place.builder()
                 .creationDate(creationDate)
                 .lat(lat)
                 .lng(lng)
+                .placeType(placeType)
                 .build();
     }
 }
