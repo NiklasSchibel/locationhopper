@@ -13,7 +13,7 @@ import DiningIcon from '@mui/icons-material/Dining';
 import SportsBarIcon from '@mui/icons-material/SportsBar';
 
 
-const placeTypes = ['Beer', 'Restaurant', 'Cafe'];
+const placeTypes = ['Beer', 'Restaurant', 'Cafe', 'all'];
 
 export interface SimpleDialogProps {
     open: boolean;
@@ -43,6 +43,7 @@ export function SimpleDialog(props: SimpleDialogProps) {
                                 {place==="Cafe" && <LocalCafeIcon />}
                                 {place==="Restaurant" && <DiningIcon />}
                                 {place==="Beer" && <SportsBarIcon />}
+                                {place==="all" && <PersonIcon />}
                                 <PersonIcon />
                             </Avatar>
                         </ListItemAvatar>

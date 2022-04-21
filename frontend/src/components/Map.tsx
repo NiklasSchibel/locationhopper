@@ -63,7 +63,7 @@ export default function Map() {
                             ]}
                         />
                     )}
-                    <ShowPlaces restPlaces={restPlaces}/>
+                    <ShowPlaces restPlaces={restPlaces} typeRest={"beer"}/>
                 </MapContainer>
             </div>
             {/*creates new doggy bag marker (ONLY IF LOGGED IN) */}

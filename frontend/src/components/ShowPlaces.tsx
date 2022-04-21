@@ -7,19 +7,20 @@ import {deletePlace} from "../service/RequestService";
 
 
 
-
 interface ShowPlacesProps {
     restPlaces: Place[]
+    typeRest: string
 }
 
 
 
 export default function ShowPlaces(props: ShowPlacesProps) {
 
-    const {restPlaces} = props
+    const {restPlaces,typeRest} = props
+
 
     const placeIcon = new L.Icon({
-        iconUrl: require("../resources/images/iconSmile.png"),
+        iconUrl: require("../resources/images/"+typeRest.toLowerCase()+".png"),
         iconSize: [35, 35]
     });
 

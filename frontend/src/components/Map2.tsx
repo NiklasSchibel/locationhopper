@@ -38,13 +38,22 @@ export default function Map2(props: Map2Props) {
     // const {position,setPosition} = props
     const [position, setPosition] = useState<PlaceCreationDTO>(center)
     const [restPlaces, setRestPlaces] = useState<Place[]>([])
+    const [placesBeer, setPlacesBeer] = useState<Place[]>([])
+    const [placesRestaurant, setPlacesRestaurant] = useState<Place[]>([])
+    const [placesCafe, setPlacesCafe] = useState<Place[]>([])
     const [draggable, setDraggable] = useState(false)
     // const [currentposition, setCurrentPosition] = useState(null)
     const markerRef = useRef(null)
     const [open, setOpen] = React.useState(false)
-    const [selectedValue, setSelectedValue] = React.useState("Restaurant")
+    const [selectedValue, setSelectedValue] = React.useState("all")
 
 
+    useEffect(() => {
+        getAllThePlaces().then(data => setRestPlaces(data))
+        getAllThePlacesByType("restaurant").then(data => setPlacesRestaurant(data))
+        getAllThePlacesByType("cafe").then(data => setPlacesCafe(data))
+        getAllThePlacesByType("beer").then(data => setPlacesBeer(data))
+    }, [selectedValue])
 
     const eventHandlers = useMemo(
         () => ({
@@ -67,10 +76,8 @@ export default function Map2(props: Map2Props) {
         iconSize: [35, 35]
     });
 
-    useEffect(() => {
-        getAllThePlacesByType(selectedValue).then(data => setRestPlaces(data))
-    }, [selectedValue])
 
+    // console.log(restPlaces,placesBeer,placesRestaurant,placesCafe)
 
 
 
@@ -148,14 +155,24 @@ return(
             </Tooltip>
         </Marker>
         <LocationMarker/>
-        <ShowPlaces restPlaces={restPlaces}
-                    />
+        {/*<ShowPlaces restPlaces={restPlaces}*/}
+        {/*            />*/}
+        {selectedValue==="Cafe" && <ShowPlaces restPlaces={placesCafe} typeRest={"cafe"}/>}
+        {selectedValue==="Restaurant" && <ShowPlaces restPlaces={placesRestaurant} typeRest={"restaurant"}/>}
+        {selectedValue==="Beer" && <ShowPlaces restPlaces={placesBeer} typeRest={"beer"}/>}
+        {selectedValue==="all" && <ShowPlaces restPlaces={placesCafe} typeRest={"cafe"}/> }
+        {selectedValue==="all" && <ShowPlaces restPlaces={placesRestaurant} typeRest={"restaurant"}/> }
+        {selectedValue==="all" && <ShowPlaces restPlaces={placesBeer} typeRest={"beer"}/> }
+
     </MapContainer>
     <Typography variant="subtitle2" component="div">
         {selectedValue}
         {selectedValue==="Cafe" && <LocalCafeIcon />}
         {selectedValue==="Restaurant" && <DiningIcon />}
         {selectedValue==="Beer" && <SportsBarIcon />}
+        {selectedValue==="all" &&  <LocalCafeIcon />}
+        {selectedValue==="all" &&  <DiningIcon />}
+        {selectedValue==="all" &&  <SportsBarIcon />}
     </Typography>
     {/*<br />*/}
     <Button variant="outlined" onClick={handleClickOpen}>
@@ -166,6 +183,7 @@ return(
         open={open}
         onClose={handleClose}
     />
+    {selectedValue!=="all" &&
     <Button variant="outlined"
             onClick={() => {
                 alert('clicked');
@@ -173,7 +191,7 @@ return(
             }}
     >
         add new Marker
-    </Button>
+    </Button>}
 </>
 )
 }
