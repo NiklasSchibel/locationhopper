@@ -145,6 +145,7 @@ export default function Map(props: Map2Props) {
     const sendValue = () => {
         setOpenForm(false)
         addBlueMarker()
+        alert("new location was added, you can reload the page")
     }
 
     function handleChange(event: any) {
@@ -203,7 +204,6 @@ return(
     {selectedValue!=="all" &&
     <Button variant="outlined"
             onClick={() => {
-                alert('clicked');
                 handleClickOpenForm();
             }}
     >
