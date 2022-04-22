@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Toolbar from '@mui/material/Toolbar';
 // import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
+// import IconButton from '@mui/material/IconButton';
+// import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
-import {Button} from "@mui/material";
+// import {Button} from "@mui/material";
 // import {Marker, Popup, useMapEvents} from "react-leaflet";
 // import Link from '@mui/material/Link';
 
@@ -51,10 +51,10 @@ export default function Header(props: HeaderProps) {
                     {title}
                 </Typography>
 
-                <IconButton>
-                    don't get it
-                    <SearchIcon />
-                </IconButton>
+                {/*<IconButton>*/}
+                {/*    don't get it*/}
+                {/*    <SearchIcon />*/}
+                {/*</IconButton>*/}
                 {/*<Button variant="outlined" size="small">*/}
                 {/*    Sign up*/}
                 {/*</Button>*/}

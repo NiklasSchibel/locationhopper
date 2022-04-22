@@ -7,7 +7,7 @@ export interface LocationType{
     error?: any,
 }
 
-const useGeoLocation = () => {
+const useGeoLocation2 = () => {
     const [location, setLocation] = useState<LocationType>({loaded: false})
 
     const onSuccess = (location: GeolocationPosition) => {
@@ -44,4 +44,4 @@ const useGeoLocation = () => {
     return location;
 };
 
-export default useGeoLocation;
+export default useGeoLocation2;

@@ -3,4 +3,5 @@ export default interface Place{
     lat: number;
     lng: number;
     placeType: string;
+    placeName?: string;
 }

@@ -32,18 +32,20 @@ public class PlaceService {
     }
 
     public Place createPlace(@Validated PlaceDTO data) {
-        final Place place = Place.newPlace(LocalDateTime.now(), data.getLat(), data.getLng(), data.getPlaceType());
+        final Place place = Place.newPlace(LocalDateTime.now(), data.getLat(), data.getLng(), data.getPlaceType(), data.getPlaceName());
 
         LOG.info("New Place created...");
         LOG.info("Creation Date: { " + LocalDateTime.now() + " }");
         LOG.info("Latitude: { " + place.getLat() + " }");
         LOG.info("Longitude: { " + place.getLng() + " }");
         LOG.info("PlaceType: { " + place.getPlaceType() + " }");
+        LOG.info("PlaceName: { " + place.getPlaceName() + " }");
         return placeRepo.insert(place);
 
     }
 
     public void deletePlace(String id) {
+        LOG.info("location: " + id + " has been deleted!");
         if(placeRepo.existsById(id)){
             placeRepo.deleteById(id);
         }

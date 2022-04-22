@@ -50,14 +50,6 @@ export function SimpleDialog(props: SimpleDialogProps) {
                         <ListItemText primary={place} />
                     </ListItem>
                 ))}
-                {/*<ListItem autoFocus button onClick={() => handleListItemClick('addAccount')}>*/}
-                {/*    <ListItemAvatar>*/}
-                {/*        <Avatar>*/}
-                {/*            <AddIcon />*/}
-                {/*        </Avatar>*/}
-                {/*    </ListItemAvatar>*/}
-                {/*    <ListItemText primary="Add account" />*/}
-                {/*</ListItem>*/}
             </List>
         </Dialog>
     );

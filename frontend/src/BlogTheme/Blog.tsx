@@ -1,17 +1,17 @@
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
+// import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 // import GitHubIcon from '@mui/icons-material/GitHub';
 // import FacebookIcon from '@mui/icons-material/Facebook';
 // import TwitterIcon from '@mui/icons-material/Twitter';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from './Header';
-import FeaturedPost from './FeaturedPost';
+// import FeaturedPost from './FeaturedPost';
 // import Main from './Main';
 // import Sidebar from './Sidebar';
 import Footer from './Footer';
-import Map2 from "../components/Map2";
+import Map from "../components/Map";
 // import {useState} from "react";
 // import {PlaceCreationDTO} from "../models/PlaceCreationDTO";
 // // @ts-ignore
@@ -43,24 +43,24 @@ import Map2 from "../components/Map2";
 //     linkText: 'Continue reading…',
 // };
 
-const featuredPosts = [
-    {
-        title: 'Featured post',
-        date: 'Nov 12',
-        description:
-            'This is a wider card with supporting text below as a natural lead-in to additional content.',
-        image: 'https://source.unsplash.com/random',
-        imageLabel: 'Image Text',
-    },
-    {
-        title: 'Post title',
-        date: 'Nov 11',
-        description:
-            'This is a wider card with supporting text below as a natural lead-in to additional content.',
-        image: 'https://source.unsplash.com/random',
-        imageLabel: 'Image Text',
-    },
-];
+// const featuredPosts = [
+//     {
+//         title: 'Featured post',
+//         date: 'Nov 12',
+//         description:
+//             'This is a wider card with supporting text below as a natural lead-in to additional content.',
+//         image: 'https://source.unsplash.com/random',
+//         imageLabel: 'Image Text',
+//     },
+//     {
+//         title: 'Post title',
+//         date: 'Nov 11',
+//         description:
+//             'This is a wider card with supporting text below as a natural lead-in to additional content.',
+//         image: 'https://source.unsplash.com/random',
+//         imageLabel: 'Image Text',
+//     },
+// ];
 
 // const posts = [post1, post2, post3];
 //
@@ -102,14 +102,14 @@ export default function Blog() {
                 />
                 <main>
                     {/*<MainFeaturedPost post={mainFeaturedPost} />*/}
-                    <Map2
+                    <Map
 
                     />
-                    <Grid container spacing={4}>
-                        {featuredPosts.map((post) => (
-                            <FeaturedPost key={post.title} post={post} />
-                        ))}
-                    </Grid>
+                    {/*<Grid container spacing={4}>*/}
+                    {/*    {featuredPosts.map((post) => (*/}
+                    {/*        <FeaturedPost key={post.title} post={post} />*/}
+                    {/*    ))}*/}
+                    {/*</Grid>*/}
                     {/*<Grid container spacing={5} sx={{ mt: 3 }}>*/}
                         {/*<Main title="Detail Description Restaurants" posts={posts} />*/}
                     {/*    <Sidebar*/}

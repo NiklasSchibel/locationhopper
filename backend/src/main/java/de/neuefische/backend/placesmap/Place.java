@@ -22,14 +22,16 @@ public class Place {
     private double lat;
     private double lng;
     private PlaceType placeType;
+    private String placeName;
 
 
-    public static Place newPlace(LocalDateTime creationDate, double lat, double lng, PlaceType placeType){
+    public static Place newPlace(LocalDateTime creationDate, double lat, double lng, PlaceType placeType,String placeName){
         return Place.builder()
                 .creationDate(creationDate)
                 .lat(lat)
                 .lng(lng)
                 .placeType(placeType)
+                .placeName(placeName)
                 .build();
     }
 }

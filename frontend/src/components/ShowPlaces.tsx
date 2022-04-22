@@ -43,7 +43,7 @@ export default function ShowPlaces(props: ShowPlacesProps) {
                         </span>
                     </Popup>
                     <Tooltip>
-                       nice
+                        {place.placeName}
                     </Tooltip>
                 </Marker>))}
         </>
