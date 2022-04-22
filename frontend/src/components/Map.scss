@@ -1,27 +1,8 @@
-.mapDiv{
+import './Map2.scss';
 
+
+.mapContainer {
+  height: 290px;
 }
 
-.locationButton {
-  background: white;
-  width: 60%;
-  max-width: 18rem;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%);
-  text-align: center;
-  overflow: hidden;
-}
-
-
-.markerButton {
-  top: 2rem;
-  background: white;
-  width: 90%;
-  height: 3rem;
-  max-width: 18rem;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%);
-  text-align: center;
-}
+#map { height: 180px; }

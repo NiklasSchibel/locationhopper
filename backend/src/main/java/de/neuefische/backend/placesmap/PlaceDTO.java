@@ -11,4 +11,6 @@ public class PlaceDTO {
 
     private double lat;
     private double lng;
+    private PlaceType placeType;
+    private String placeName;
 }

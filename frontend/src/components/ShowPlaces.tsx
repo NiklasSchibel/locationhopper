@@ -6,21 +6,26 @@ import Place from "../models/Place";
 import {deletePlace} from "../service/RequestService";
 
 
-const placeIcon = new L.Icon({
-    iconUrl: require("../resources/images/iconSmile.png"),
-    iconSize: [35, 35]
-});
 
 interface ShowPlacesProps {
     restPlaces: Place[]
+    typeRest: string
 }
+
+
 
 export default function ShowPlaces(props: ShowPlacesProps) {
 
-    const {restPlaces} = props
+    const {restPlaces,typeRest} = props
+
+
+    const placeIcon = new L.Icon({
+        iconUrl: require("../resources/images/"+typeRest.toLowerCase()+".png"),
+        iconSize: [35, 35]
+    });
 
     function deletePlaceInMapp(id: string){
-        alert('clicked' + id);
+        alert('deleted: ' + id);
         deletePlace(id);
     }
 
@@ -38,7 +43,7 @@ export default function ShowPlaces(props: ShowPlacesProps) {
                         </span>
                     </Popup>
                     <Tooltip>
-                       nice
+                        {place.placeName}
                     </Tooltip>
                 </Marker>))}
         </>

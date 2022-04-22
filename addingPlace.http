@@ -3,5 +3,7 @@ Content-Type: application/json
 
 {
   "lat": 48.144,
-  "lng": 11.581
+  "lng": 11.581,
+  "placeType": "CAFE",
+  "placeName": "testRestaurant"
 }

@@ -19,6 +19,11 @@ public class PlaceController {
         return placeService.getAll();
     }
 
+    @GetMapping(value = "/{type}")
+    public List<Place> getPlacesByType(@PathVariable("type") String type){
+        return placeService.getPlacesByType(type);
+    }
+
     @PostMapping
     public Place createPlaces(@RequestBody PlaceDTO placeDTO){
         return placeService.createPlace(placeDTO);
