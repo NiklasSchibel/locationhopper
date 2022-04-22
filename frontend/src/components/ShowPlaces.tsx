@@ -25,7 +25,7 @@ export default function ShowPlaces(props: ShowPlacesProps) {
     });
 
     function deletePlaceInMapp(id: string){
-        alert('deleted: ' + id);
+        alert('deleted: ' + id +", you can reload the page");
         deletePlace(id);
     }
 
