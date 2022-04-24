@@ -83,20 +83,20 @@ export default function Map(props: Map2Props) {
 
     function LocationMarker() {
         const [currentposition, setCurrentPosition] = useState(null);
-        const [bbox, setBbox] = useState([]);
+
 
         const map = useMap();
 
+
+
         useEffect(() => {
-            map.locate().on("locationfound", function (e) {
+            map.locate({setView: true}).on("locationfound", function (e) {
                 // @ts-ignore
                 setCurrentPosition(e.latlng);
                 map.flyTo(e.latlng, map.getZoom());
                 const radius = e.accuracy;
                 const circle = L.circle(e.latlng, radius);
                 circle.addTo(map);
-                // @ts-ignore
-                setBbox(e.bounds.toBBoxString().split(","));
             });
             // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
@@ -106,9 +106,7 @@ export default function Map(props: Map2Props) {
                     icon = {placeIconMyself}
                     >
                 <Popup>
-                    You are here. <br />
-                    <b>Southwest lng</b>: {bbox[0]} <br />
-                    <b>Southwest lat</b>: {bbox[1]} <br />
+                    "You are here, within the blue circle"
                 </Popup>
                 <Tooltip>
                     nice place? trag the blue marker here... and then add it to the map
