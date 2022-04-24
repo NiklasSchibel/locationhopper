@@ -91,7 +91,7 @@ export default function Map(props: Map2Props) {
             map.locate().on("locationfound", function (e) {
                 // @ts-ignore
                 setCurrentPosition(e.latlng);
-                // map.flyTo(e.latlng, map.getZoom());
+                map.flyTo(e.latlng, map.getZoom());
                 const radius = e.accuracy;
                 const circle = L.circle(e.latlng, radius);
                 circle.addTo(map);
@@ -154,7 +154,7 @@ export default function Map(props: Map2Props) {
 
 return(
 <>
-    <MapContainer id="map" center={[48.135, 11.581]} zoom={10} tap={false}>
+    <MapContainer id="map" center={[48.135, 11.581]} zoom={10}>
         <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
