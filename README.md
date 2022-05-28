@@ -1,2 +1,2 @@
-# RestaurantM-App
-a Restaurant-Map
+# LocationHopper-App
+(Navigation-App)
